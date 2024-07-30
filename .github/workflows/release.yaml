@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.vscode/**'
+      - '.idea/**'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  marketplace-contracts-validate:
+    name: Run marketplace-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/marketplace-contracts-ci.yaml
+
+  marketplace-contracts-release:
+    name: Run marketplace-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/marketplace-contracts-cd.yaml
+    needs: marketplace-contracts-validate
+
+  marketplace-frontend-validate:
+    name: Run marketplace-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/marketplace-frontend-ci.yaml
+
+  marketplace-frontend-release:
+    name: Run marketplace-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/marketplace-frontend-cd.yaml
+    needs: marketplace-frontend-validate

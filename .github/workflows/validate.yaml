@@ -1,0 +1,14 @@
+name: Pull Request validation
+
+on: [pull_request]
+
+
+jobs:
+  marketplace-contracts-ci:
+    name: Run marketplace-contracts validation
+    uses: ./.github/workflows/marketplace-contracts-ci.yaml
+
+  marketplace-frontend-ci:
+    name: Run marketplace-frontend validation
+    uses: ./.github/workflows/marketplace-frontend-ci.yaml
+
