@@ -59,13 +59,13 @@ const AppCalls = ({ openModal, setModalState }: AppCallsInterface) => {
       return
     })
 
-    const response = await appClient.hello({ name: contractInput }).catch((e: Error) => {
-      enqueueSnackbar(`Error calling the contract: ${e.message}`, { variant: 'error' })
-      setLoading(false)
-      return
-    })
+    // const response = await appClient.hello({ name: contractInput }).catch((e: Error) => {
+    //   enqueueSnackbar(`Error calling the contract: ${e.message}`, { variant: 'error' })
+    //   setLoading(false)
+    //   return
+    // })
 
-    enqueueSnackbar(`Response from the contract: ${response?.return}`, { variant: 'success' })
+    // enqueueSnackbar(`Response from the contract: ${response?.return}`, { variant: 'success' })
     setLoading(false)
   }
 
